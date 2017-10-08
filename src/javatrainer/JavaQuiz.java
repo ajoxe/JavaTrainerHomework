@@ -46,10 +46,10 @@ public class JavaQuiz {
             System.out.println(Text.continueQuiz);
             String answer2 = inp.next();
             if (answer2.toLowerCase().equals("y")) {
-                    continue;}
-            else{
-                    System.out.println("goodbye!");
-                    break;
+                continue;
+            } else {
+                System.out.println("goodbye!");
+                break;
             }
         }
     }
@@ -82,12 +82,15 @@ public class JavaQuiz {
             String error = "Please print a number";
             try {
                 choice = Integer.parseInt(scanner.next());
+                if (choice > 4) {
+                    System.out.println("Please enter a number between 1 and 4");
+                    scanner.next();
+                }
             } catch (NumberFormatException e) {
-                System.out.println(error);
                 promptUser();
+                scanner.next();
             }
             if ((choice - 1) == randomNum) {
-
                 score += 1;
                 System.out.print("Correct! ");
             } else {
