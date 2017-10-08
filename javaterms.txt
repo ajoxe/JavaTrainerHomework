@@ -1,0 +1,24 @@
+Initialization
+Assigning a value to a variable for the first time.
+Termination
+The end of an action.
+Condition
+An expression or evaluation of an expression which must be either true OR false.
+Increment
+Increasing a variable's value by 1; for example: i++ or ++i.
+Decrement
+Decreasing a variable's value by 1; for example: i-- or --i
+break
+keyword which terminates a loop or switch statement and transfers execution to the statement immediately following the loop or switch statement.
+int
+A primitive data type used to represent a 32-bit integer.
+class
+A blueprint used to create objects.
+method
+A collection of statements that are grouped together to perform an operation.
+java
+A high-level programming language developed by Sun MicroSystems.
+abstract class
+A superclass that cannot be instantiated. It is used to define general characteristics.
+boolean
+a binary variable, having two possible values: “true” or “false.
