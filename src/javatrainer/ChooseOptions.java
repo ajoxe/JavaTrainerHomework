@@ -49,7 +49,7 @@ public class ChooseOptions {
                 case "quiz":
                     System.out.println("go to quiz\n");
                     javaQuiz.begin();
-                    chooseAgain();
+                    chooseLearnOrQuiz();
                     break;
                 case "learn":
                     System.out.println("go to quiz\n");
