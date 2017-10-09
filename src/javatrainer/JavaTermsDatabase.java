@@ -11,7 +11,6 @@ public class JavaTermsDatabase {
 
     public JavaTermsDatabase(){
         javaTerms = addToHash();
-
     }
 
     public HashMap<String, String>addToHash(){

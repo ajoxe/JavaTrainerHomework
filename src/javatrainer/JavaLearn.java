@@ -2,20 +2,7 @@ package javatrainer;
 
 import java.util.*;
 
-public class JavaLearn {
-
-    private HashMap<String, String> javaTerms = new HashMap<>();
-
-
-    public JavaLearn() {
-
-        JavaTermsDatabase data = new JavaTermsDatabase();
-        setJavaTerms(data.javaTerms);
-    }
-
-    private void setJavaTerms(HashMap<String, String> javaTerms) {
-        this.javaTerms = javaTerms;
-    }
+public class JavaLearn extends JavaTermsDatabase {
 
     public void begin() {
         System.out.print("Choose one of the following terms to learn more (type 'quit' to quit at any time): \n\n");

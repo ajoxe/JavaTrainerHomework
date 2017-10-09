@@ -6,24 +6,17 @@ import java.util.HashMap;
 import java.util.Random;
 import java.util.Scanner;
 
-public class JavaQuiz {
+public class JavaQuiz extends JavaTermsDatabase{
 
-    private ArrayList<String> answerSet = new ArrayList();
+    private ArrayList<String> answerSet = new ArrayList<>();
     private HashMap<Integer, String> answerHash = new HashMap<>();
-    private HashMap<String, String> javaTerms = new HashMap<>();
+
     private Random rand = new Random();
     private int score;
     private String correct;
     private int randomNum;
     int questionNum;
     static boolean isQuit;
-
-
-    public JavaQuiz() {
-        JavaTermsDatabase data = new JavaTermsDatabase();
-        setJavaTerms(data.javaTerms);
-        buildAnswerSet(javaTerms);
-    }
 
     public void begin() {
         Scanner inp = new Scanner(System.in);
@@ -32,23 +25,25 @@ public class JavaQuiz {
 
         startPrompt();
         for (String a : javaTerms.keySet()) {
+            buildAnswerSet(javaTerms);
             questionNum += 1;
             String correct = javaTerms.get(a);
             setRandomNum(rand.nextInt((4)));
             removeCorrect(correct);
             buildAnswerHash();
             answerHash.put(randomNum, correct);
-            System.out.println("\n" + questionNum + ")  What is '" + a + "' ?\n");
+            System.out.println("\n" +"Question " + questionNum + "\nWhat is '" + a + "' ?\n");
             for (int i : answerHash.keySet()) {
                 System.out.println(i + 1 + ": " + answerHash.get(i));
             }
-            answerSet.add(correct);
             checkCorrect(inp);
+            answerSet.add(correct);
             if (isQuit) {
                 System.out.println("*Java Quiz ended.\n");
-                System.out.println("Final score: " + score + " out of " + questionNum);
+                System.out.println("Final score: " + score + " out of " + (questionNum -1));
                 break;
             }
+
         }
     }
 
@@ -75,7 +70,7 @@ public class JavaQuiz {
 
     private void checkCorrect(Scanner scanner) {
         while (scanner.hasNext()) {
-            String response = scanner.next();
+            String response = scanner.next().toLowerCase();
             boolean isQuit = false;
             setIsQuit(isQuit);
             if (response.equals("quit")) {
@@ -115,10 +110,6 @@ public class JavaQuiz {
     private void startPrompt() {
         System.out.println("Select the number that corresponds to the correct answer");
 
-    }
-
-    private void setJavaTerms(HashMap<String, String> javaTerms) {
-        this.javaTerms = javaTerms;
     }
 
     private void setRandomNum(int randomNum) {
