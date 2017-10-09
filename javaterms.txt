@@ -1,12 +1,12 @@
-Initialization
+initialization
 Assigning a value to a variable for the first time.
-Termination
+termination
 The end of an action.
-Condition
+condition
 An expression or evaluation of an expression which must be either true OR false.
-Increment
+increment
 Increasing a variable's value by 1; for example: i++ or ++i.
-Decrement
+decrement
 Decreasing a variable's value by 1; for example: i-- or --i
 break
 keyword which terminates a loop or switch statement and transfers execution to the statement immediately following the loop or switch statement.
