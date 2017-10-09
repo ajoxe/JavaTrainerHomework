@@ -15,12 +15,14 @@ public class ChooseOptions {
         Scanner input = new Scanner(System.in);
         while (input.hasNext()) {
             String answer = input.next();
-            switch (answer.toUpperCase()) {
-                case "A":
+            switch (answer.toLowerCase()) {
+                case "learn":
+                    System.out.println("\nWelcome to Java Learn!\n");
                     javaLearn.begin();
                     chooseAgain();
                     break;
-                case "B":
+                case "quiz":
+                    System.out.println("\nWelcome to Java Quiz!\n");
                     javaQuiz.begin();
                     chooseAgain();
                     break;
@@ -33,37 +35,32 @@ public class ChooseOptions {
     }
 
     public void chooseAgain() {
+
+        System.out.println(Text.exitOrQuiz);
         Scanner input = new Scanner(System.in);
-        System.out.println(Text.learnMore);
         String answer = input.next();
-        if (answer.equalsIgnoreCase("Y")) {
-            javaLearn.begin();
-            chooseAgain();
-        } else if (answer.equalsIgnoreCase("N")) {
-            System.out.println(Text.exitOrQuiz);
-            String answer2 = input.next();
-            switch (answer2.toLowerCase()) {
-                case "exit":
-                    System.out.println(Text.goodbye);
-                    break;
-                case "quiz":
-                    System.out.println("go to quiz\n");
-                    javaQuiz.begin();
-                    chooseLearnOrQuiz();
-                    break;
-                case "learn":
-                    System.out.println("go to quiz\n");
-                    javaLearn.begin();
-                    chooseLearnOrQuiz();
-                    break;
-                default:
-                    System.out.println(Text.notOption);
-                    chooseLearnOrQuiz();
-                    break;
-            }
-        } else {
-            System.out.println(Text.notOption);
+
+
+        switch (answer.toLowerCase()) {
+            case "exit":
+                System.out.println(Text.goodbye);
+                break;
+            case "quiz":
+                System.out.println("\nWelcome to Java Quiz!\n");
+                javaQuiz.begin();
+                chooseAgain();
+                break;
+            case "learn":
+                System.out.println("\nWelcome to Java Learn!\n");
+                javaLearn.begin();
+                chooseAgain();
+                break;
+            default:
+                System.out.println(Text.notOption);
+                chooseAgain();
+                break;
         }
+
     }
 }
 

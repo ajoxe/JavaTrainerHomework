@@ -15,6 +15,8 @@ public class JavaQuiz {
     private int score;
     private String correct;
     private int randomNum;
+    int questionNum;
+    static boolean isQuit;
 
 
     public JavaQuiz() {
@@ -24,12 +26,11 @@ public class JavaQuiz {
     }
 
     public void begin() {
-
         Scanner inp = new Scanner(System.in);
-        int score = 0;
-        int questionNum = 0;
-        startPrompt();
+        questionNum = 0;
+        score = 0;
 
+        startPrompt();
         for (String a : javaTerms.keySet()) {
             questionNum += 1;
             String correct = javaTerms.get(a);
@@ -37,18 +38,15 @@ public class JavaQuiz {
             removeCorrect(correct);
             buildAnswerHash();
             answerHash.put(randomNum, correct);
-            System.out.println("\n" + questionNum + ")  What is a " + a + "\n");
+            System.out.println("\n" + questionNum + ")  What is '" + a + "' ?\n");
             for (int i : answerHash.keySet()) {
                 System.out.println(i + 1 + ": " + answerHash.get(i));
             }
-            checkCorrect(inp);
             answerSet.add(correct);
-            System.out.println(Text.continueQuiz);
-            String answer2 = inp.next();
-            if (answer2.toLowerCase().equals("y")) {
-                continue;
-            } else {
-                System.out.println("goodbye!");
+            checkCorrect(inp);
+            if (isQuit) {
+                System.out.println("*Java Quiz ended.\n");
+                System.out.println("Final score: " + score + " out of " + questionNum);
                 break;
             }
         }
@@ -77,11 +75,17 @@ public class JavaQuiz {
 
     private void checkCorrect(Scanner scanner) {
         while (scanner.hasNext()) {
+            String response = scanner.next();
+            boolean isQuit = false;
+            setIsQuit(isQuit);
+            if (response.equals("quit")) {
+                isQuit = true;
+                setIsQuit(isQuit);
+                break;
+            }
             int choice = 0;
-
-            String error = "Please print a number";
             try {
-                choice = Integer.parseInt(scanner.next());
+                choice = Integer.parseInt(response);
                 if (choice > 4) {
                     System.out.println("Please enter a number between 1 and 4");
                     scanner.next();
@@ -99,6 +103,8 @@ public class JavaQuiz {
             System.out.println("Your score: " + score);
             break;
         }
+
+
     }
 
     private void promptUser() {
@@ -107,7 +113,7 @@ public class JavaQuiz {
     }
 
     private void startPrompt() {
-        System.out.println("Welcome to the Java Quiz!\nSelect the number that corresponds to the correct answer");
+        System.out.println("Select the number that corresponds to the correct answer");
 
     }
 
@@ -117,5 +123,9 @@ public class JavaQuiz {
 
     private void setRandomNum(int randomNum) {
         this.randomNum = randomNum;
+    }
+
+    public static void setIsQuit(boolean isQuit) {
+        JavaQuiz.isQuit = isQuit;
     }
 }

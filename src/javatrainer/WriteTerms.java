@@ -1,6 +1,7 @@
 package javatrainer;
 
 import java.io.*;
+//todo write add terms functions
 
 public class WriteTerms {
     File terms = new File("javaterms.txt");
